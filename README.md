@@ -1,5 +1,7 @@
 # List-Screen
 
-A package to manage input and output
+A package to manage input and output to the command line
 
-this readme is not finished
+## Examples
+
+

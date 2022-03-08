@@ -1,21 +1,12 @@
-from math import inf
 import sys
-from console_element import line_type, console_element
-from dynamic_element import DynamicElement
+from .console_element import line_type, console_element
+from .dynamic_element import DynamicElement
 import asyncio
 from typing import Any
 from aioconsole import ainput
 import colorama
-import time
 
 colorama.init(wrap=False)
-
-
-def inf_div(v1, v2):
-    if v2 == 0:
-        return inf
-    else:
-        return v1 / v2
 
 
 def ansi_move(number: int, action: str, offset=0, ending=""):
@@ -111,7 +102,6 @@ class Screen:
             else:
                 return "".join([render_console_element(element) for element in line])
 
-        start_time = time.time()
         self._changed = False
         rendered_content = [render_line(v) for v in self.current_content]
 
@@ -173,17 +163,5 @@ class Screen:
 
         change_string = "".join(change_string_list)
         if change_string != "\0337\n\0338":
-            if False:
-                for change_string in change_string_list:
-                    print(change_string, end="")
-                    sys.stdout.flush()
-                    # open("log.txt", "a").write(repr(change_string) + "\n")
-                # open("log.txt", "a").write("END\n")
-            else:
-                calc_time = time.time()
-                print(change_string, end="")
-                sys.stdout.flush()
-                now = time.time()
-                open("log.txt", "a").write(
-                    f"calc: {calc_time - start_time} print: {now - calc_time} mfps: {inf_div(1, now - start_time)} {repr(change_string)}\n"
-                )
+            print(change_string, end="")
+            sys.stdout.flush()

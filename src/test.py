@@ -1,8 +1,8 @@
-from main import Screen
+import list_screen
 import asyncio
 
 money = 20
-screen = Screen(["This is a title", str(money), "", "", "Test"])
+screen = list_screen.Screen(["This is a title", str(money), "", "", "Test"])
 
 
 async def money_loop():
@@ -18,7 +18,7 @@ async def main():
     asyncio.create_task(money_loop())
     while True:
         text = await screen.input(append=False)
-        screen.insert([f"ok got a value {text}", 'um'], 2)
+        screen.insert([f"ok got a value {text}", "um"], 2)
 
 
 asyncio.run(main())
